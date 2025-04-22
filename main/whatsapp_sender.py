@@ -9,6 +9,7 @@ def send_whatsapp_message(phone_number, message):
         redirection_script = f"""
             <script type="text/javascript">
                 window.open("{whatsapp_url}", "_blank");
+                console.log("Running...");
             </script>
             """
 
