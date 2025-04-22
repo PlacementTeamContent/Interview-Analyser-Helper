@@ -8,9 +8,11 @@ def send_whatsapp_message(phone_number, message):
         # Inject JavaScript to automatically redirect the user to WhatsApp Web
         redirection_script = f"""
             <script type="text/javascript">
-                window.location.href = "{whatsapp_url}";
+                window.open("{whatsapp_url}", "_blank");
             </script>
             """
 
         st.markdown(redirection_script, unsafe_allow_html=True)
+    else:
+        st.error("Invalid Details")
 
