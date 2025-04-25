@@ -11,8 +11,8 @@ load_dotenv()
 # Function to send email
 def send_email(subject, body, recipients):
     # Get secrets from Streamlit Cloud environment
-    sender_email = st.secrets["email"]
-    sender_password = st.secrets["password"]
+    sender_email = st.secrets["auth"]["email"]
+    sender_password = st.secrets["auth"]["password"]
 
     # sender_email = os.getenv("EMAIL")
     # sender_password = os.getenv("APP_PASSWORD")
