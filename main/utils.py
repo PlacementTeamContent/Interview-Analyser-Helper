@@ -39,19 +39,19 @@ def load_data():
 
     return pd.DataFrame(agent.read_all_data())
 
-def get_contact_list(df, names, date, domains, duration):
+def get_contact_list(df, names, date, domains, duration, template):
 
-    numbers = []
+    mail_ids = []
     messages = []
     for name in names:
         try:
-            numbers.append(f"+91{str(df[df['Full Name'] == name].iloc[0, 2])}")
-            messages.append(get_message(name, date, domains, duration))
+            mail_ids.append(f"{str(df[df['Full Name'] == name].iloc[0, 3])}")
+            messages.append(get_message(template, name, date, domains, duration))
         except:
-            numbers.append('')
+            mail_ids.append('')
             messages.append("Missing Contact Details")
 
-    interviewers = list(zip(names, numbers, messages))
+    interviewers = list(zip(names, mail_ids, messages))
 
     return interviewers
 
@@ -78,7 +78,7 @@ def get_new_form(data, temp=False):
 
     return f"{st.session_state.config.get('base_url')}?form_id={form_id}"
 
-def get_message(name='Ravi', date=get_next_day_date(), domains='python/java', duration='1 hour', temp=False):
+def get_message(template, name='Ravi', date=get_next_day_date(), domains='python/java', duration='1 hour', temp=False):
 
     data = {
         'name':name,
@@ -87,13 +87,13 @@ def get_message(name='Ravi', date=get_next_day_date(), domains='python/java', du
         'duration':duration
     }
 
-    message = (f""
-               f"Hi {name},\n"
-               f"\nAre you available tomorrow {date} to conduct {domains} interviews?\n"
-               f"If yes, please share your available time slots by filling out this form.\n\n"
-               f"{get_new_form(json.dumps(data), temp)}\n"
-               f"\nInterview Duration: {duration}"
-               )
+    message = template.format(
+        name=name,
+        date=date,
+        domains=domains,
+        form_link=get_new_form(json.dumps(data), temp),
+        duration=duration
+    )
 
     return message
 
