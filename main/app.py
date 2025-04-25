@@ -155,7 +155,7 @@ def main_app():
     else:
 
         if "authenticated" not in st.session_state:
-            st.session_state.authenticated = True
+            st.session_state.authenticated = False
 
         if not st.session_state.authenticated:
             st.subheader('Help me to Identify You...')
