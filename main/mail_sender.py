@@ -3,6 +3,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from dotenv import load_dotenv
 import os
+import streamlit as st
 
 load_dotenv()
 
@@ -10,11 +11,11 @@ load_dotenv()
 # Function to send email
 def send_email(subject, body, recipients):
     # Get secrets from Streamlit Cloud environment
-    # sender_email = st.secrets["email"]
-    # sender_password = st.secrets["password"]
+    sender_email = st.secrets["email"]
+    sender_password = st.secrets["password"]
 
-    sender_email = os.getenv("EMAIL")
-    sender_password = os.getenv("APP_PASSWORD")
+    # sender_email = os.getenv("EMAIL")
+    # sender_password = os.getenv("APP_PASSWORD")
 
     try:
         # Set up the server
@@ -39,6 +40,6 @@ def send_email(subject, body, recipients):
         return f"Error: {str(e)}"
 
 if __name__=='__main__':
-    print(send_email("Testing", "Hi, Test Mail", ['ravikant.knp2019@gmail.com', 'bhoushitha.a@nxtwave.co.in']))
+    print(send_email("Testing", "Hi, Test Mail", ['']))
 
 
