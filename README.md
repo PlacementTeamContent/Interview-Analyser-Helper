@@ -49,7 +49,7 @@ It is highly recommended to use a virtual environment to isolate project depende
 
    - On Windows:
      ```bash
-     .venv\Scriptsa\ctivate
+     .venvScriptsactivate
      ```
 
    - On macOS/Linux:
@@ -102,6 +102,16 @@ This will launch the Streamlit app in your browser.
 
 - The app will send personalized emails with the unique form links and custom messages.
 - Once a form is submitted, it will be marked as invalid and removed from the list of active forms.
+
+### Screenshots
+
+#### Image 1: Example of the app interface
+
+![Image 1](assets/HomePage.png)
+
+#### Image 2: Form submission status
+
+![Image 2](assets/FormPage.png)
 
 ## License
 
