@@ -1,4 +1,5 @@
-# Interview Analyser Helper
+# Interview Analyser Helper ![License](https://img.shields.io/badge/license-MIT-blue.svg)
+
 
 ## Description
 
@@ -114,5 +115,4 @@ This will launch the Streamlit app in your browser.
 ![Image 2](assets/FormPage.png)
 
 ## License
-
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
