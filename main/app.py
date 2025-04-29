@@ -94,8 +94,7 @@ def form_page(form_id, data):
         st.session_state.valid = validate_form(form_id)
 
     if not st.session_state.valid:
-        st.error("!!! Invalid form")
-
+        st.error("Your form has already been submitted. Thank you!")
         return
 
     interview_duration = int(data['duration'].split()[0])
